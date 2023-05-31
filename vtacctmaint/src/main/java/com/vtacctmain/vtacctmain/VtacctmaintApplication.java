@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.vtacctmain.vtacctmain;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +8,10 @@ public class VtacctmaintApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VtacctmaintApplication.class, args);
+		
+		System.out.println("test");
+	
+		
 	}
 
 }
