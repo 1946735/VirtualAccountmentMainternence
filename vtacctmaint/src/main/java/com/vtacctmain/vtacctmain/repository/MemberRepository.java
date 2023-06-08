@@ -29,13 +29,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MemberRepository {
 
-	/*
-	// Datasource로 변경 > DataSource 에서 DB에서 Pull 해옴
 	private final DataSource dataSource;
 	
 	public MemberRepository(DataSource dataSource) {
+		super();
 		this.dataSource = dataSource;
-	}	*/
+	}
 	
 	public MemberDto MemberSave(MemberDto memberDto) throws SQLException {
 		
@@ -86,8 +85,8 @@ public class MemberRepository {
 				MemberDto memberDto = new MemberDto(); // 형성
 				memberDto.setMemberId(rs.getString("memberId"));
 				memberDto.setMemberName(rs.getString("memberName"));
-				memberDto.setMemberName(rs.getString("memberPassword"));
-				memberDto.setMemberName(rs.getString("teamName"));
+				memberDto.setMemberPassword(rs.getString("memberPassword"));
+				memberDto.setTeamName(rs.getString("teamName"));
 				return memberDto;
 				
 			}
@@ -109,10 +108,10 @@ public class MemberRepository {
 	}
 
 	
-	// 회원 수정/삭제
+	// 회원 수정
 	public void update (String memberId,String memberPassword, String memberName, String teamName) throws SQLException{
 		
-		String sql = "update gibis_member set memberPassword = ?, memberName = ?, teamName = ?";
+		String sql = "update gibis_member set memberPassword = ?, memberName = ?, teamName = ? where memberId = ?";
 		
 		Connection conn = null;
 		PreparedStatement prst = null;
@@ -123,6 +122,9 @@ public class MemberRepository {
 			prst.setString(1, memberPassword);
 			prst.setString(2, memberName);
 			prst.setString(3, teamName);
+			
+			// where
+			prst.setString(4, memberId);
 			
 			int resultSize = prst.executeUpdate();
 			log.info("resultSize = {}", resultSize);
@@ -139,6 +141,43 @@ public class MemberRepository {
 		
 	}
 	
+	// 회원 삭제
+	public void delete (String memberId) throws SQLException{
+		
+		String sql = "delete from gibis_member where memberId = ?";
+		
+		Connection conn = null;
+		PreparedStatement prst = null;
+		
+		try {
+			
+			conn = dataSource.getConnection();
+			prst = conn.prepareStatement(sql);
+			prst.setString(1, memberId);
+			
+			prst.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			log.info("Delete Error = ", e);
+			throw e;
+		} finally {
+			
+			close(conn,prst,null);		
+			log.info("delete close");
+			
+		}		
+		
+	}
+	
+	
+	
+	/* 기능메소드
+	 * 
+	 */
+
+	
 	private void close(Connection conn, Statement stmt, ResultSet rs) {
 		
 		JdbcUtils.closeConnection(conn);
@@ -149,8 +188,11 @@ public class MemberRepository {
 
 	
 	// dataSource
-	private Connection getConnection(){
-		return DBConnectionUtil.getConnection();
+	private Connection getConnection() throws SQLException{
+		
+		Connection conn= dataSource.getConnection();
+		log.info("getConnection = {}, class = {}", conn, conn.getClass());
+		return conn;
 	}
 	
 }
