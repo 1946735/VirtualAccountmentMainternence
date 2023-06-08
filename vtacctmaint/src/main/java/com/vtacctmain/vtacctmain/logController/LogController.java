@@ -7,13 +7,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
 
 //@Slf4j
 @RestController
 public class LogController {
 	
 	
-	private final Logger log = LoggerFactory.getLogger(getClass());
+	private final Logger log = LoggerFactory.getLogger(getClass()); //lombok 이 자동으로 해줌 @Slf4j
 	
 	
 	@RequestMapping("/log-test")

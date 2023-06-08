@@ -21,9 +21,21 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	//테스트에서 lombok 사용
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	
+	// https://mvnrepository.com/artifact/com.oracle.ojdbc/ojdbc8
+	implementation group: 'com.oracle.ojdbc', name: 'ojdbc8', version: '19.3.0.0'
+	implementation group: 'com.oracle.ojdbc', name: 'orai18n', version: '19.3.0.0'
+	
 }
 
 tasks.named('test') {

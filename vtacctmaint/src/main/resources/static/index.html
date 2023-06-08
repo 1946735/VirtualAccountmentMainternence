@@ -5,12 +5,17 @@
 <title>Title</title>
 </head>
 <body>
-<ul>
-<li>test
-<ul>
-<li><a href="/log-test">test1</a></li>
-</ul>
-</li>
-</ul>
+	<ul>
+		<li>test
+			<ul>
+				<li><a href="/log-test">test1</a></li>
+			</ul>
+		</li>
+	</ul>
+	<form action = "./login.jsp" method ="post" name="loginform"> 
+		ID : <input class="id" name="id" value="아이디를 입력하세요"></br>
+		PW : <input class="password" type="password" name="password" value="">
+		<button type="submit">LOG IN</button>	
+	</form>
 </body>
 </html>
