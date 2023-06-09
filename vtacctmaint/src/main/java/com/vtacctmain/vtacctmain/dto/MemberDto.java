@@ -1,4 +1,4 @@
-package com.vtacctmain.vtacctmain.controller;
+package com.vtacctmain.vtacctmain.dto;
 
 import lombok.Data;
 

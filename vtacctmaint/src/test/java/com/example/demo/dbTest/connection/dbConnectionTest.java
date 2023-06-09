@@ -18,7 +18,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.vtacctmain.vtacctmain.Connection.ConnectionCons;
 import com.vtacctmain.vtacctmain.Connection.DBConnectionUtil;
-import com.vtacctmain.vtacctmain.controller.MemberDto;
+import com.vtacctmain.vtacctmain.dto.MemberDto;
 import com.vtacctmain.vtacctmain.repository.MemberRepository;
 import com.zaxxer.hikari.HikariDataSource;
 

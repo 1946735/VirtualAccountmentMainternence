@@ -13,7 +13,7 @@ import org.springframework.jdbc.support.JdbcUtils;
 import javax.sql.DataSource;
 
 import com.vtacctmain.vtacctmain.Connection.DBConnectionUtil;
-import com.vtacctmain.vtacctmain.controller.MemberDto;
+import com.vtacctmain.vtacctmain.dto.MemberDto;
 
 import lombok.extern.slf4j.Slf4j;
 

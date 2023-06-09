@@ -10,7 +10,7 @@ import java.sql.Statement;
 import org.springframework.jdbc.support.JdbcUtils;
 
 import com.vtacctmain.vtacctmain.Connection.DBConnectionUtil;
-import com.vtacctmain.vtacctmain.controller.MainternenceDto;
+import com.vtacctmain.vtacctmain.dto.MainternenceDto;
 
 import lombok.extern.slf4j.Slf4j;
 
